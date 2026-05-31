@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prediksi Peringkat OSN Informatika 2026</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,.06);
+      --panel-strong: rgba(255,255,255,.1);
+      --text: #eef2ff;
+      --muted: #b8c0df;
+      --line: rgba(255,255,255,.12);
+      --accent: #7c3aed;
+      --accent-2: #22c55e;
+      --gold: #f59e0b;
+      --silver: #cbd5e1;
+      --bronze: #d97706;
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 22px;
+      --radius-sm: 14px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124,58,237,.28), transparent 28%),
+        radial-gradient(circle at top right, rgba(34,197,94,.16), transparent 28%),
+        linear-gradient(180deg, #09101e 0%, #111827 100%);
+      color: var(--text);
+    }
+    a { color: inherit; }
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 18px 40px;
+    }
+    .hero {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -120px auto;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(124,58,237,.34), transparent 70%);
+      pointer-events: none;
+    }
+    .kicker {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .2px;
+    }
+    h1 {
+      margin: 16px 0 10px;
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+    }
+    .subtitle {
+      margin: 0;
+      max-width: 900px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .stat {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+    }
+    .stat .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .stat .value {
+      margin-top: 6px;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin: 22px 0 14px;
+    }
+    .control {
+      flex: 1 1 250px;
+      min-width: 220px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      border-radius: 16px;
+      padding: 13px 14px;
+      outline: none;
+    }
+    .control::placeholder { color: #98a2c3; }
+    select.control {
+      appearance: none;
+      background-image:
+        linear-gradient(45deg, transparent 50%, currentColor 50%),
+        linear-gradient(135deg, currentColor 50%, transparent 50%);
+      background-position:
+        calc(100% - 18px) calc(1em + 4px),
+        calc(100% - 12px) calc(1em + 4px);
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 38px;
+    }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 8px 0 0;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .gold-dot { background: var(--gold); }
+    .silver-dot { background: var(--silver); }
+    .bronze-dot { background: var(--bronze); }
+
+    .panel {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .panel-head {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .panel-head h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .panel-head .count {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      text-align: left;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #d7defc;
+      background: rgba(10, 14, 28, .96);
+      border-bottom: 1px solid var(--line);
+      padding: 13px 14px;
+    }
+    tbody td {
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding: 14px;
+      vertical-align: top;
+      color: #eff3ff;
+      font-size: 14px;
+    }
+    tbody tr:hover {
+      background: rgba(255,255,255,.04);
+    }
+    .rank {
+      font-weight: 800;
+      font-size: 16px;
+      width: 70px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 13px;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .medal-emas {
+      background: rgba(245,158,11,.16);
+      color: #ffd37a;
+      border-color: rgba(245,158,11,.28);
+    }
+    .medal-perak {
+      background: rgba(203,213,225,.16);
+      color: #eef2ff;
+      border-color: rgba(203,213,225,.22);
+    }
+    .medal-perunggu {
+      background: rgba(217,119,6,.16);
+      color: #ffcc93;
+      border-color: rgba(217,119,6,.24);
+    }
+    .muted {
+      color: var(--muted);
+    }
+    .grid-refs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .source-card, .candidate-ref {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      border-radius: 18px;
+      padding: 16px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .source-card:hover {
+      background: rgba(255,255,255,.08);
+    }
+    .source-title, .candidate-name {
+      font-weight: 800;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    .source-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .source-link {
+      margin-top: 12px;
+      color: #c7d2fe;
+      font-size: 13px;
+    }
+    .candidate-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .candidate-links a {
+      display: inline-flex;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      text-decoration: none;
+      color: #dbe4ff;
+      font-size: 13px;
+    }
+    .candidate-links a:hover {
+      background: rgba(255,255,255,.08);
+    }
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .empty {
+      padding: 34px 18px;
+      text-align: center;
+      color: var(--muted);
+    }
+    @media (max-width: 860px) {
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-refs { grid-template-columns: 1fr; }
+      table { min-width: 820px; }
+      .table-wrap { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="kicker">Prediksi OSN Informatika 2026</div>
+      <h1>Peringkat prediksi OSN Informatika 2026</h1>
+      <p class="subtitle">
+        Daftar ini memuat peserta yang diprediksi kembali tampil pada OSN Informatika 2026, beserta peringkat, medali,
+        kelas 2026, sekolah, dan provinsi.
+      </p>
+
+      <div class="stats">
+        <div class="stat"><div class="label">Peserta</div><div class="value" id="statTotal">20</div></div>
+        <div class="stat"><div class="label">Medali emas</div><div class="value" id="statGold">5</div></div>
+        <div class="stat"><div class="label">Medali perak</div><div class="value" id="statSilver">10</div></div>
+        <div class="stat"><div class="label">Medali perunggu</div><div class="value" id="statBronze">5</div></div>
+      </div>
+
+      <div class="legend">
+        <span class="pill"><span class="dot gold-dot"></span> Peringkat 1–5</span>
+        <span class="pill"><span class="dot silver-dot"></span> Peringkat 6–15</span>
+        <span class="pill"><span class="dot bronze-dot"></span> Peringkat 16–30</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Daftar prediksi</h2>
+        <div class="count" id="resultCount">20 nama tampil</div>
+      </div>
+      <div style="padding: 16px 18px 0;">
+        <div class="controls">
+          <input id="search" class="control" type="search" placeholder="Cari nama atau sekolah..." />
+          <select id="medalFilter" class="control">
+            <option value="all">Semua medali</option>
+            <option value="Emas">Emas</option>
+            <option value="Perak">Perak</option>
+            <option value="Perunggu">Perunggu</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:84px;">Rank</th>
+              <th style="width:120px;">Medali</th>
+              <th>Nama</th>
+              <th>Almamater / Sekolah</th>
+              <th style="width:100px;">Kelas 2026</th>
+              <th style="width:160px;">Provinsi</th>
+            </tr>
+          </thead>
+          <tbody id="rows">
+            <tr>
+      <td class="rank">1</td>
+      <td><span class="medal badge medal-emas">Emas</span></td>
+      <td><strong>Marcellinus Marvel Fatolosja</strong></td>
+      <td>SMA Strada St. Thomas Aquino</td>
+      <td>XI</td>
+      <td>Banten</td>
+    </tr>
+<tr>
+      <td class="rank">2</td>
+      <td><span class="medal badge medal-emas">Emas</span></td>
+      <td><strong>Gerardus Paxton Mardhi</strong></td>
+      <td>SMA Kanisius Jakarta</td>
+      <td>XI</td>
+      <td>D.K.I. Jakarta</td>
+    </tr>
+<tr>
+      <td class="rank">3</td>
+      <td><span class="medal badge medal-emas">Emas</span></td>
+      <td><strong>Lionel Christensen Wijaya</strong></td>
+      <td>SMA Katolik St. Louis 1 Surabaya</td>
+      <td>X</td>
+      <td>Jawa Timur</td>
+    </tr>
+<tr>
+      <td class="rank">4</td>
+      <td><span class="medal badge medal-emas">Emas</span></td>
+      <td><strong>Khairandra Muhamad Nandyka</strong></td>
+      <td>MAN 2 Kota Malang</td>
+      <td>X</td>
+      <td>Jawa Timur</td>
+    </tr>
+<tr>
+      <td class="rank">5</td>
+      <td><span class="medal badge medal-emas">Emas</span></td>
+      <td><strong>Christopher Hendrawan</strong></td>
+      <td>SMA St. Aloysius 1 Bandung</td>
+      <td>XI</td>
+      <td>Jawa Barat</td>
+    </tr>
+<tr>
+      <td class="rank">6</td>
+      <td><span class="medal badge medal-perak">Perak</span></td>
+      <td><strong>Melvin Agelus</strong></td>
+      <td>SMAN 1 Tualang</td>
+      <td>X</td>
+      <td>Riau</td>
+    </tr>
+<tr>
+      <td class="rank">7</td>
+      <td><span class="medal badge medal-perak">Perak</span></td>
+      <td><strong>I Gusti Ngurah Gede Angga Panji Kenanta</strong></td>
+      <td>SMAN 1 Denpasar</td>
+      <td>XI</td>
+      <td>Bali</td>
+    </tr>
+<tr>
+      <td class="rank">8</td>
+      <td><span class="medal badge medal-perak">Perak</span></td>
+      <td><strong>Ezra Pogijanto</strong></td>
+      <td>SMA Kusuma Bangsa Palembang</td>
+      <td>X</td>
+      <td>Sumatera Selatan</td>
+    </tr>
+<tr>
+      <td class="rank">9</td>
+      <td><span class="medal badge medal-perak">Perak</span></td>
+      <td><strong>Ahmad Yazid Muhandis</strong></td>
+      <td>SMA Kharisma Bangsa</td>
+      <td>X</td>
+      <td>Banten</td>
+    </tr>
+<tr>
+      <td class="rank">10</td>
+      <td><span class="medal badge medal-perak">Perak</span></td>
+      <td><strong>Raditya Ananta Noorkhairan</strong></td>
+      <td>SMA Al-Kautsar Bandar Lampung</td>
+      <td>XI</td>
+      <td>Lampung</td>
+    </tr>
+<tr>
+      <td class="rank">11</td>
+      <td><span class="medal badge medal-perak">Perak</span></td>
+      <td><strong>Ghifari Mukti Wibowo</strong></td>
+      <td>SMA Wardaya</td>
+      <td>X</td>
+      <td>D.K.I. Jakarta</td>
+    </tr>
+<tr>
+      <td class="rank">12</td>
+      <td><span class="medal badge medal-perak">Perak</span></td>
+      <td><strong>Avner Maxwell Lim</strong></td>
+      <td>Sekolah Pelita Harapan Pluit Village</td>
+      <td>X</td>
+      <td>D.K.I. Jakarta</td>
+    </tr>
+<tr>
+      <td class="rank">13</td>
+      <td><span class="medal badge medal-perak">Perak</span></td>
+      <td><strong>Muhammad Daffarian Altair</strong></td>
+      <td>SMA Kharisma Bangsa Tangerang Selatan</td>
+      <td>X</td>
+      <td>Banten</td>
+    </tr>
+<tr>
+      <td class="rank">14</td>
+      <td><span class="medal badge medal-perak">Perak</span></td>
+      <td><strong>Gracio Bintang Wijaya</strong></td>
+      <td>SMA Regina Pacis Bogor</td>
+      <td>XI</td>
+      <td>Jawa Barat</td>
+    </tr>
+<tr>
+      <td class="rank">15</td>
+      <td><span class="medal badge medal-perak">Perak</span></td>
+      <td><strong>Joshua Matthew Karuniawan</strong></td>
+      <td>SMAK St. Louis 1 Surabaya</td>
+      <td>XI</td>
+      <td>Jawa Timur</td>
+    </tr>
+<tr>
+      <td class="rank">16</td>
+      <td><span class="medal badge medal-perunggu">Perunggu</span></td>
+      <td><strong>Nicholas Laurent</strong></td>
+      <td>SMA Kusuma Bangsa Palembang</td>
+      <td>XI</td>
+      <td>Sumatera Selatan</td>
+    </tr>
+<tr>
+      <td class="rank">17</td>
+      <td><span class="medal badge medal-perunggu">Perunggu</span></td>
+      <td><strong>Ricky Reynaldi</strong></td>
+      <td>SMAK Immanuel Pontianak</td>
+      <td>XI</td>
+      <td>Kalimantan Barat</td>
+    </tr>
+<tr>
+      <td class="rank">18</td>
+      <td><span class="medal badge medal-perunggu">Perunggu</span></td>
+      <td><strong>Hisyam Ahmad Abiyyu</strong></td>
+      <td>MAN 2 Kota Malang</td>
+      <td>XI</td>
+      <td>Jawa Timur</td>
+    </tr>
+<tr>
+      <td class="rank">19</td>
+      <td><span class="medal badge medal-perunggu">Perunggu</span></td>
+      <td><strong>Naila Putri Adiyasa</strong></td>
+      <td>SMAN 2 Surabaya</td>
+      <td>XI</td>
+      <td>Jawa Timur</td>
+    </tr>
+<tr>
+      <td class="rank">20</td>
+      <td><span class="medal badge medal-perunggu">Perunggu</span></td>
+      <td><strong>Davian Anders</strong></td>
+      <td>SMA Sutomo 1 Medan</td>
+      <td>XI</td>
+      <td>Sumatera Utara</td>
+    </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="empty" id="emptyState" style="display:none;">Tidak ada nama yang cocok.</div>
+    </section>
+
+    <section class="panel" style="padding: 16px 18px;">
+      <div class="panel-head" style="padding:0 0 14px; border-bottom: 1px solid var(--line); margin-bottom: 14px;">
+        <h2>Referensi relevan</h2>
+        <div class="count">Tautan terbuka di tab baru</div>
+      </div>
+      <div class="grid-refs">
+        <a class="source-card" href="https://osn.toki.id/OSN2025/hasil" target="_blank" rel="noopener noreferrer">
+        <div class="source-title">OSN 2025 hasil peserta</div>
+        <div class="source-desc">Daftar peringkat final OSN Informatika 2025.</div>
+        <div class="source-link">Buka sumber ↗</div>
+      </a>
+<a class="source-card" href="https://osn.toki.id/OSN2025/open-results" target="_blank" rel="noopener noreferrer">
+        <div class="source-title">OSN 2025 open results</div>
+        <div class="source-desc">Hasil open contest 2025 untuk pembanding performa.</div>
+        <div class="source-link">Buka sumber ↗</div>
+      </a>
+<a class="source-card" href="https://kompetitif.id/2026/02/07/hasil-final-liga-kompetitif-indonesia-musim-1/" target="_blank" rel="noopener noreferrer">
+        <div class="source-title">Kompetitif Indonesia musim #1</div>
+        <div class="source-desc">Referensi tambahan untuk Marcellinus Marvel Fatolosja.</div>
+        <div class="source-link">Buka sumber ↗</div>
+      </a>
+<a class="source-card" href="https://competition.binus.ac.id/bnpchs2025/competition/?page=ActiveRegistrants" target="_blank" rel="noopener noreferrer">
+        <div class="source-title">BNPC-HS 2025 registrants / scoreboard</div>
+        <div class="source-desc">Pendukung untuk Marcellinus dan Lionel Christensen Wijaya.</div>
+        <div class="source-link">Buka sumber ↗</div>
+      </a>
+      </div>
+
+      <div style="height: 16px;"></div>
+
+      <div class="footer-note">
+        Peringkat dan medali disusun sebagai prediksi berbasis hasil 2025, eligibility 2026, dan referensi kompetisi pendukung.
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const data = [{'rank': 1, 'name': 'Marcellinus Marvel Fatolosja', 'school': 'SMA Strada St. Thomas Aquino', 'province': 'Banten', 'class2026': 'XI', 'medal': 'Emas'}, {'rank': 2, 'name': 'Gerardus Paxton Mardhi', 'school': 'SMA Kanisius Jakarta', 'province': 'D.K.I. Jakarta', 'class2026': 'XI', 'medal': 'Emas'}, {'rank': 3, 'name': 'Lionel Christensen Wijaya', 'school': 'SMA Katolik St. Louis 1 Surabaya', 'province': 'Jawa Timur', 'class2026': 'X', 'medal': 'Emas'}, {'rank': 4, 'name': 'Khairandra Muhamad Nandyka', 'school': 'MAN 2 Kota Malang', 'province': 'Jawa Timur', 'class2026': 'X', 'medal': 'Emas'}, {'rank': 5, 'name': 'Christopher Hendrawan', 'school': 'SMA St. Aloysius 1 Bandung', 'province': 'Jawa Barat', 'class2026': 'XI', 'medal': 'Emas'}, {'rank': 6, 'name': 'Melvin Agelus', 'school': 'SMAN 1 Tualang', 'province': 'Riau', 'class2026': 'X', 'medal': 'Perak'}, {'rank': 7, 'name': 'I Gusti Ngurah Gede Angga Panji Kenanta', 'school': 'SMAN 1 Denpasar', 'province': 'Bali', 'class2026': 'XI', 'medal': 'Perak'}, {'rank': 8, 'name': 'Ezra Pogijanto', 'school': 'SMA Kusuma Bangsa Palembang', 'province': 'Sumatera Selatan', 'class2026': 'X', 'medal': 'Perak'}, {'rank': 9, 'name': 'Ahmad Yazid Muhandis', 'school': 'SMA Kharisma Bangsa', 'province': 'Banten', 'class2026': 'X', 'medal': 'Perak'}, {'rank': 10, 'name': 'Raditya Ananta Noorkhairan', 'school': 'SMA Al-Kautsar Bandar Lampung', 'province': 'Lampung', 'class2026': 'XI', 'medal': 'Perak'}, {'rank': 11, 'name': 'Ghifari Mukti Wibowo', 'school': 'SMA Wardaya', 'province': 'D.K.I. Jakarta', 'class2026': 'X', 'medal': 'Perak'}, {'rank': 12, 'name': 'Avner Maxwell Lim', 'school': 'Sekolah Pelita Harapan Pluit Village', 'province': 'D.K.I. Jakarta', 'class2026': 'X', 'medal': 'Perak'}, {'rank': 13, 'name': 'Muhammad Daffarian Altair', 'school': 'SMA Kharisma Bangsa Tangerang Selatan', 'province': 'Banten', 'class2026': 'X', 'medal': 'Perak'}, {'rank': 14, 'name': 'Gracio Bintang Wijaya', 'school': 'SMA Regina Pacis Bogor', 'province': 'Jawa Barat', 'class2026': 'XI', 'medal': 'Perak'}, {'rank': 15, 'name': 'Joshua Matthew Karuniawan', 'school': 'SMAK St. Louis 1 Surabaya', 'province': 'Jawa Timur', 'class2026': 'XI', 'medal': 'Perak'}, {'rank': 16, 'name': 'Nicholas Laurent', 'school': 'SMA Kusuma Bangsa Palembang', 'province': 'Sumatera Selatan', 'class2026': 'XI', 'medal': 'Perunggu'}, {'rank': 17, 'name': 'Ricky Reynaldi', 'school': 'SMAK Immanuel Pontianak', 'province': 'Kalimantan Barat', 'class2026': 'XI', 'medal': 'Perunggu'}, {'rank': 18, 'name': 'Hisyam Ahmad Abiyyu', 'school': 'MAN 2 Kota Malang', 'province': 'Jawa Timur', 'class2026': 'XI', 'medal': 'Perunggu'}, {'rank': 19, 'name': 'Naila Putri Adiyasa', 'school': 'SMAN 2 Surabaya', 'province': 'Jawa Timur', 'class2026': 'XI', 'medal': 'Perunggu'}, {'rank': 20, 'name': 'Davian Anders', 'school': 'SMA Sutomo 1 Medan', 'province': 'Sumatera Utara', 'class2026': 'XI', 'medal': 'Perunggu'}];
+
+    const rows = Array.from(document.querySelectorAll('#rows tr'));
+    const search = document.getElementById('search');
+    const medalFilter = document.getElementById('medalFilter');
+    const resultCount = document.getElementById('resultCount');
+    const emptyState = document.getElementById('emptyState');
+
+    function norm(s) {
+      return (s || '').toString().toLowerCase().trim();
+    }
+
+    function applyFilters() {
+      const q = norm(search.value);
+      const medal = medalFilter.value;
+      let shown = 0;
+
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const rowText = norm(Array.from(cells).map(td => td.textContent).join(' '));
+        const rowMedal = row.querySelector('.medal')?.textContent?.trim() || '';
+        const okQuery = !q || rowText.includes(q);
+        const okMedal = medal === 'all' || rowMedal === medal;
+        const visible = okQuery && okMedal;
+        row.style.display = visible ? '' : 'none';
+        if (visible) shown += 1;
+      });
+
+      resultCount.textContent = `${shown} nama tampil`;
+      emptyState.style.display = shown ? 'none' : 'block';
+    }
+
+    search.addEventListener('input', applyFilters);
+    medalFilter.addEventListener('change', applyFilters);
+    applyFilters();
+  </script>
+</body>
+</html>
